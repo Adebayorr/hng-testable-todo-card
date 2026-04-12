@@ -10,8 +10,8 @@
     <article data-testid="test-todo-card">
         <div class="first-parent-div">
             <div class="title-container">
-                <label for="completed"><input type="checkbox" class="completion" name="completed" id="completed" data-testid="test-todo-complete-toggle"></label>
-                <h2 class="title" data-testid="test-todo-title">HNG Level 0 Task</h2>
+                <label for="completed" aria-labelledby="task completion checkbox"><input type="checkbox" class="completion" name="completed" id="completed" data-testid="test-todo-complete-toggle"></label>
+                <h1 class="title" data-testid="test-todo-title">HNG Level 0 Task</h1>
             </div>
             <strong class="status" data-testid="test-todo-status" aria-label="status">Pending</strong>
         </div>
@@ -22,11 +22,11 @@
                 </p>
                 <p class="due-date-title">
                     Due date
-                    <time datetime="2026-04-10" class="due_date" data-testid="test-todo-due-date">12/04/2026</time>
+                    <time datetime="2026-04-10" class="due_date" data-testid="test-todo-due-date">April 16, 2026</time>
                 </p>
                 <p class="countdown">
                     countdown
-                    <time data-testid="test-todo-time-remaining"></time>
+                    <time aria-live="polite" data-testid="test-todo-time-remaining"></time>
                 </p>
             </div>
         </div>
