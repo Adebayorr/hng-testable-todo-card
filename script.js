@@ -10,8 +10,6 @@ buttons.forEach(button => button.addEventListener('click', (e) => {
     console.log(`${button.textContent} clicked`)
 }))
 
-console.log(buttons)
-console.log(timeLeftElement)
 
 
 completionCheck.addEventListener('change', (e) => {
@@ -26,7 +24,7 @@ completionCheck.addEventListener('change', (e) => {
         statusElement.innerHTML = 'Pending'
         titleElement.classList.remove('completed')
         statusElement.classList.remove('status-green')
-        console.log(countdown.classList.remove('rm-countdown'))
+        countdown.classList.remove('rm-countdown')
 
     }
 })

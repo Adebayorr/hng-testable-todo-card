@@ -9,6 +9,10 @@ body {
     height: 100vh;
     background-color: #f0d1a8;
     color: #3a3a36;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 article {
@@ -16,12 +20,11 @@ article {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     max-width: 500px;
     margin: 0 auto;
+    margin: 0 12px;
 }
 
 .first-parent-div {
     padding: 8px 0;
-    /* display: flex; */
-    /* flex-direction: column; */
     
 }
 
@@ -35,6 +38,7 @@ article {
 .completion {
     width: 24px;
     height: 24px;
+    transition: all 0.2s ease-in;
 }
 
 .title {
@@ -136,4 +140,15 @@ button {
 
 .delete-btn {
     background-color: #a52b19;
+}
+
+@media screen and (min-width: 500px) {
+    body {
+        background-color: #efefef;
+    }
+
+    article {
+        background-color: #f0d1a8;
+        border-radius: 8px;
+    }
 }
