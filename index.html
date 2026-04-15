@@ -22,7 +22,7 @@
                 </p>
                 <p class="due-date-title">
                     Due date:
-                    <time datetime="2026-04-10" class="due_date" data-testid="test-todo-due-date">April 16, 2026</time>
+                    <time datetime="2026-04-10" class="due-date" data-testid="test-todo-due-date">April 16, 2026</time>
                 </p>
                 <p class="countdown">
                     countdown
@@ -43,6 +43,21 @@
         </div>
         
     </article>
+    <div class="form-container">
+        <form data-testid="test-todo-edit-form">
+            <label for="title-input">title <input id="title-input" placeholder="title here..." type="text" data-testid="test-todo-edit-title-input" ></label>
+            <label for="desc-input">description <textarea name="" id="desc-input" placeholder="Type task description" data-testid="test-todo-edit-description-input"></textarea></label>
+            <select name="priority selection" id="priority" data-testid="test-todo-edit-priority-select">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+            <label for="due-date-input">Due date <input type="datetime-local" placeholder="Due date" id="due-date-input" data-testid="test-todo-edit-due-date-input" ></label>
+            <button data-testid="test-todo-save-button" class="form-btn save">Save</button>
+            <button data-testid="test-todo-cancel-button" class="form-btn cancel">Cancel</button>
+        </form>
+    </div>
+
     <script defer src="script.js"></script>
 </body>
 </html>
