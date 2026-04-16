@@ -1,4 +1,5 @@
 // Get HTML Elements
+const todoCard = document.querySelector('article')
 const completionCheck = document.body.querySelector('.completion[data-testid="test-todo-complete-toggle"]')
 const statusElement = document.body.querySelector('.status')
 const titleElement = document.body.querySelector('.title')
@@ -7,14 +8,17 @@ const descriptionElement = document.querySelector('.description')
 const dueDateElement = document.querySelector('.due-date')
 const priorityElement = document.querySelector('[data-testid="test-todo-priority"]')
 const timeLeftElement = document.body.querySelector('[data-testid="test-todo-time-remaining"]')
+const statusSelectionElement = document.querySelector('#priority-check')
 const editButton = document.querySelector('.edit-btn')
 const deleteButton = document.querySelector('.delete-btn')
+const formContainer = document.querySelector('.form-container')
+const formElement = document.querySelector('form')
 const titleInput = document.querySelector('#title-input')
 const descriptionInput = document.querySelector('#desc-input')
 const priorityInput = document.querySelector('#priority')
 const dueDateInput = document.querySelector('#due-date-input')
 const saveButton = document.querySelector('.save')
-const cancelButton = document.querySelector('cancel')
+const cancelButton = document.querySelector('.cancel')
 
 function formatDueDate (input) {
     console.log(input)
@@ -40,6 +44,12 @@ const todoObject = {
 
 }
 
+formElement.addEventListener('submit', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault()
+    }
+})
+
 saveButton.addEventListener('click', (e) => {
     e.preventDefault()
     updateTodo()
@@ -49,6 +59,8 @@ saveButton.addEventListener('click', (e) => {
     priorityElement.textContent = todoObject.priority
     updateCountDown()
     console.log(dueDateInput.value)
+    formContainer.classList.add('hidden')
+    todoCard.classList.remove('hidden')
 
 
 })
@@ -76,32 +88,62 @@ function updateTodo () {
 // Card Buttons onClick
 console.log(editButton)
 editButton.addEventListener('click', (e) => {
-    console.log(`${editButton.textContent} clicked`)
+    formContainer.classList.remove('hidden')
+    todoCard.classList.add('hidden')
+    titleInput.value = todoObject.title
+    priorityInput.value = todoObject.priority
+    dueDateInput.value = todoObject.rawDueDate
+    descriptionInput.value = todoObject.desc
 })
 
 deleteButton.addEventListener('click', (e) => {
-    console.log(`${deleteButton.textContent} clicked`)
+    console.log(`${editButton.textContent} clicked`)
 })
 
-
+cancelButton.addEventListener('click', (e) => {
+    e.preventDefault()
+    formContainer.classList.add('hidden')
+    todoCard.classList.remove('hidden')
+})
 
 completionCheck.addEventListener('change', (e) => {
     if (e.target.checked) {
-        statusElement.innerHTML = 'Done'
+        statusElement.textContent = 'Completed'
         statusElement.classList.remove('status-red')
         statusElement.classList.add('status-green')
         titleElement.classList.add('completed')
         countdown.classList.add('rm-countdown')
+        statusSelectionElement.value = 'Completed'
 
     } else {
-        statusElement.innerHTML = 'Pending'
+        // statusElement.innerHTML = 'Pending'
         titleElement.classList.remove('completed')
         statusElement.classList.remove('status-green')
         countdown.classList.remove('rm-countdown')
+        statusSelectionElement.value = 'Pending'
 
     }
 })
+console.log(completionCheck.checked);
 
+statusSelectionElement.addEventListener('change', () => {
+    if (statusSelectionElement.value === 'Done') {
+        completionCheck.checked = true
+        titleElement.classList.add('completed')
+        countdown.classList.add('rm-countdown')
+        statusElement.classList.add('status-green')
+    } else if (statusSelectionElement.value === 'In Progress') {
+        completionCheck.checked = false
+        countdown.classList.remove('rm-countdown')
+        statusElement.classList.remove('status-green')
+        titleElement.classList.remove('completed')
+    } else {
+        completionCheck.checked = false
+        countdown.classList.remove('rm-countdown')
+        titleElement.classList.remove('completed')
+        statusElement.classList.remove('status-green')
+    }
+})
 const dueDate = new Date("2026-04-16T18:00").getTime()
 
 function updateCountDown () {

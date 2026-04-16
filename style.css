@@ -58,7 +58,7 @@ article {
     background-color: #010134;
     width: auto;
     text-align: center;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     display: inline;
     transition: all 0.25s ease-in;
     color: #fefefe;
@@ -155,5 +155,57 @@ button {
 
 
 .form-container {
+    background-color: #f0d1a8;
+    border-radius: 8px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 500px;
+    padding: 16px 24px;
+    gap: 12px;
     
+}
+
+form > label {
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+ input, select, textarea {
+    padding: 8px;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 8px;
+}
+
+
+.form-btn-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.priority-check {
+    all: unset;
+}
+
+.priority-check > option {
+    background-color: #002f09;
+    font-size: 1rem;
 }
